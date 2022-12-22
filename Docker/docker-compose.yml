@@ -1,8 +1,69 @@
-version: "3"
+version: '3.8'
+
 services:
-  webserver:
-    build: .
+  db:
+    image: mysql:5.7.16
+    restart: always
+    deploy:
+      resources:
+        limits:
+            cpus: "0.75"
+            memory: "512M"
+        reservations:
+            cpus: "0.40"
+            memory: "128M"
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    networks:
+      - net
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    expose:
+      - 3306
+      - 33060
     ports:
-      - "8000:5000"
+      - 81:3306
+      - 82:33060
+
+  nginx:
+    build:
+      context: ./nginx/
+      dockerfile: dockerfile
+    restart: always
+    deploy:
+      resources:
+         limits:
+            cpus: "0.60"
+            memory: "1024M"
+         reservations:
+            cpus: "0.40"
+            memory: "512M"
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    networks:
+      - net
+
   app:
-    build: ./app
+    build:
+      context: ./app/
+      dockerfile: dockerfile
+    restart: always  
+    deploy:
+      resources:
+         limits:
+            cpus: "0.30"
+            memory: "256M"
+         reservations:
+            cpus: "0.20"
+            memory: "128M"
+    ports:
+      - 8080:8080
+    networks:
+      - net
+    depends_on:
+      - db
+
+networks:
+  net:
