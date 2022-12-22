@@ -130,3 +130,7 @@ dmypy.json
 
 #folders
 .logs
+
+#files
+PingPong$MyHandler.class
+PingPong.class
