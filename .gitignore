@@ -130,7 +130,7 @@ dmypy.json
 
 #folders
 .logs/
-Docker/db/
+Docker/db/mysql
 
 #files
 PingPong$MyHandler.class
