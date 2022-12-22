@@ -1,0 +1,7 @@
+# This dockerfile will generate the result image(containing 3 images) upon building.
+# The image corresponding with this dockerfile should be built after using docker-compose.yml for creating
+# our input images.
+
+FROM db-image
+FROM app-image
+FROM nginx-image
