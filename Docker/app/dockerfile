@@ -1,0 +1,9 @@
+FROM openjdk:8
+
+COPY . .
+
+EXPOSE 8080
+
+RUN javac -d classes/ src/PingPong.java
+
+ENTRYPOINT [ "java", "-classpath", "classes", "Docker.app.src.PingPong" ]

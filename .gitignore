@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#folders
+.logs/
+Docker/db/mysql
+
+#files
+PingPong$MyHandler.class
+PingPong.class
