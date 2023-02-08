@@ -16,7 +16,7 @@ spec:
 
   capacity:
 
-    storage: 10Gi
+    storage: 1GB
 
   accessModes:
 
