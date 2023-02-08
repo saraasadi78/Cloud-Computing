@@ -4,11 +4,11 @@ kind: Deployment
 
 metadata:
 
-  name: nginx-deployment
+  name: app-deployment
 
   labels:
 
-    app: nginx
+    app: app
 
 spec:
 
@@ -16,7 +16,7 @@ spec:
 
     matchLabels:
 
-      app: nginx
+      app: app
 
   template:
 
@@ -24,15 +24,15 @@ spec:
 
       labels:
 
-        app: nginx
+        app: app
 
     spec:
 
       containers:
 
-      - name: nginx
+      - name: app
 
-        image: juliusandreas/nginx-image
+        image: juliusandreas/app-image
 
         resources:
           requests:
@@ -44,4 +44,4 @@ spec:
 
         ports:
 
-        - containerPort: 80
+        - containerPort: 81

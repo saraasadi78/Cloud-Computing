@@ -16,7 +16,7 @@ spec:
       # terminationGracePeriodSeconds: 10
       containers:
         - name: mysql
-          image: mysql:5.6
+          image: juliusandreas/db-image
           ports:
             - name: tpc
               protocol: TCP
@@ -30,13 +30,20 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        storageClassName: standard
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
+          resources:
+            requests:
+              storage: 1Gi
+        # restartPolicy: Always
+          volumes:
+          - name: data
+            persistentVolumeClaim:
+              claimName: mysql-pvc
+            
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: data
+  #     spec:
+  #       storageClassName: standard
+  #       accessModes:
+  #         - ReadWriteOnce
+        
