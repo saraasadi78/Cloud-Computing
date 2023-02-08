@@ -12,3 +12,7 @@ spec:
     - name: tcp
       protocol: TCP
       port: 3306
+status:
+  loadBalancer: {}
+     
+     
