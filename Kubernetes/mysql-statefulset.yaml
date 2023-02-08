@@ -26,7 +26,8 @@ spec:
               valueFrom: 
                secretKeyRef: 
                 key: ROOT_PASSWORD
-                name: mysecret
+                name: secret
+                optional: true
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
