@@ -12,8 +12,6 @@ metadata:
 
 spec:
 
-  replicas: 3
-
   selector:
 
     matchLabels:
@@ -35,6 +33,14 @@ spec:
       - name: nginx
 
         image: nginx:1.14.2
+
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "500m"
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"
 
         ports:
 
